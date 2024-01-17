@@ -1,3 +1,4 @@
+
 <?php require 'db-connect.php'; ?>
 
 <!DOCTYPE html>
@@ -5,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>登録完了</title>
+    <title>情報登録完了</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,6 +29,11 @@
             color: #3498db;
         }
 
+        p {
+            margin: 20px 0;
+            color: #555;
+        }
+
         hr {
             margin: 20px 0;
             border: 1px solid #ddd;
@@ -46,7 +52,18 @@
 </head>
 <body>
     <div class="container">
-        <h2>情報を登録しました</h2>
+        <?php
+        $pdo = new PDO($connect, USER, PASS);
+        $sql = $pdo->prepare('INSERT INTO product VALUES (null, ?, ?)');
+
+        if ($sql->execute([$_POST['name'], $_POST['Authorname']])) {
+            echo '<h2>登録成功</h2>';
+            echo '<p>情報を登録しました。</p>';
+        } else {
+            echo '<h2>エラー</h2>';
+            echo '<p>登録に失敗しました。</p>';
+        }
+        ?>
         <hr>
         <a href="index.html">戻る</a>
     </div>
