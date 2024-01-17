@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>削除</title>
 </head>
 <body>
-    <table>
+<table>
         <thead>
             <tr>
                 <th>ID</th>
@@ -22,13 +22,10 @@
             $sql = $pdo->query('select * from product');
             foreach ($sql as $row) {
                 echo '<tr>';
-                echo '<form action="update-output.php" method="post">';
-                echo '<input type="hidden" name="id" value="' , $row['id'] , '">';
-                echo '<td>' , $row['id'] , '</td>';
-                echo '<td><input type="text" name="name" value="' , $row['name'] , '"></td>';
-                echo '<td><input type="text" name="author_name" value="' , $row['Author name'] , '"></td>';
-                echo '<td><input type="submit" value="更新"></td>';
-                echo '</form>';
+                echo '<td>',$row['id'],'</td>';
+                echo '<td>',$row['name'], '</td>';
+                echo '<td>',$row['Author name'],'</td>';
+                echo '<td><a href="delete-output.php?id=',$row['id'],'">削除</a></td>';
                 echo '</tr>';
             }
             ?>

@@ -11,9 +11,8 @@
     $pdo=new PDO($connect,USER,PASS);
     $sql=$pdo->query('select * from product');
     foreach ($sql as $row) {
-        $id=$row['id'];
         echo '<tr>';
-        echo '<td>',$id,'</td>';
+        echo '<td>',$row['id'],'</td>';
         echo '<td>',$row['name'], '</td>';
         echo '<td>',$row['Author name'],'</td>';
         echo '</tr>';
